@@ -1,0 +1,191 @@
+/* ================= GLOBAL ================= */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  color: #343a40;
+}
+
+.card {
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+h5 {
+  font-weight: 600;
+}
+
+/* ================= FORM ================= */
+.form-card {
+  padding: 20px;
+}
+
+.form-card .form-label {
+  font-weight: 500;
+}
+
+.form-card .form-control {
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.form-card .form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 5px rgba(13, 110, 253, 0.3);
+}
+
+/* ===== Glow Button (ONLY Save / Update) ===== */
+.form-card .btn.btn-success.w-100 {
+  --glow-color: rgb(217, 176, 255);
+  --glow-spread-color: rgba(191, 123, 255, 0.78);
+  --btn-color: rgb(100, 61, 136);
+
+  border: .25em solid var(--glow-color);
+  color: var(--glow-color);
+  background-color: var(--btn-color);
+  border-radius: 1em;
+  font-weight: bold;
+  box-shadow: 0 0 1em var(--glow-color);
+  transition: all 0.3s;
+}
+
+.form-card .btn.btn-success.w-100:hover {
+  color: var(--btn-color);
+  background-color: var(--glow-color);
+/* ================= TABLE BASE ================= */
+.custom-table {
+  width: 750px;
+  border-collapse: collapse;
+  margin: 50px auto;
+  background: #fff;
+}
+
+/* Zebra striping */
+.custom-table tr:nth-of-type(odd) {
+  background: #eee;
+}
+
+.custom-table th {
+  background: #3498db;
+  color: #fff;
+  font-weight: bold;
+}
+
+.custom-table td,
+.custom-table th {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+  font-size: 16px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px) {
+
+  .custom-table {
+    width: 100%;
+  }
+
+  .custom-table,
+  .custom-table thead,
+  .custom-table tbody,
+  .custom-table th,
+  .custom-table td,
+  .custom-table tr {
+    display: block;
+  }
+
+  .custom-table thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .custom-table tr {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+
+  .custom-table td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+  }
+  .table tbody tr:hover {
+  background-color: #f1f3f5;
+}
+
+  .custom-table td:before {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    content: attr(data-column);
+    font-weight: bold;
+    color: #000;
+  }
+}
+}
+/* ===== Table Wrapper (for sticky header) ===== */
+.table-wrapper {
+  max-height: 420px;        /* adjust if needed */
+  overflow-y: auto;
+  border-radius: 14px;
+}
+
+/* ===== Fancy Table ===== */
+.fancy-table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* ===== Gradient Dark Sticky Header ===== */
+.fancy-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  background: linear-gradient(
+    135deg,
+    #316395,
+    #297acb
+  );
+
+  color: #ffffff;
+  font-weight: 600;
+  padding: 14px;
+  border: none;
+  white-space: nowrap;
+}
+
+/* ===== Rounded Header Corners ===== */
+.fancy-table thead th:first-child {
+  border-top-left-radius: 14px;
+}
+
+.fancy-table thead th:last-child {
+  border-top-right-radius: 14px;
+}
+
+/* ===== Row Hover ===== */
+.fancy-table tbody tr:hover {
+  background-color: #f1f3f5;
+}
+
+/* ===== Smooth Scrollbar (Optional but nice) ===== */
+.table-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: #adb5bd;
+  border-radius: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+  background: #f8f9fa;
+}

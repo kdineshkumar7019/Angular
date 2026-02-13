@@ -1,0 +1,75 @@
+<div class="auth-page">
+  <div class="auth-container">
+
+    <div class="image-panel">
+      <div class="overlay">
+        <h1>Welcome Page</h1>
+        <p>Create your account to access the student portal.</p>
+      </div>
+    </div>
+
+    <div class="form-panel">
+      <div class="top-links">
+        <span routerLink="/login">Sign In</span>
+      </div>
+
+      <h2>Register</h2>
+
+      <form (ngSubmit)="register()" #registerForm="ngForm">
+
+        <div class="form-group">
+          <label>USERNAME</label>
+          <input
+            type="text"
+            [(ngModel)]="registerData.username"
+            name="username"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label>EMAIL</label>
+          <input
+            type="email"
+            [(ngModel)]="registerData.email"
+            name="email"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label>PASSWORD</label>
+          <input
+            type="password"
+            [(ngModel)]="registerData.password"
+            name="password"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label>CONFIRM PASSWORD</label>
+          <input
+            type="password"
+            [(ngModel)]="confirmPassword"
+            name="confirmPassword"
+            required
+          />
+        </div>
+
+        <div class="alert" *ngIf="alertMessage" [ngClass]="alertType">
+          {{ alertMessage }}
+        </div>
+
+        <button
+          type="submit"
+          [disabled]="isLoading || registerForm.invalid"
+        >
+          {{ isLoading ? 'Registering...' : 'Register' }}
+        </button>
+
+      </form>
+    </div>
+
+  </div>
+</div>

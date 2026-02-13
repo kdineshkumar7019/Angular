@@ -1,0 +1,168 @@
+<div class="d-flex min-vh-100">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar" [class.collapsed]="isCollapsed">
+
+    <!-- Sidebar Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h5 class="mb-0" *ngIf="!isCollapsed">Student Details</h5>
+      <button class="btn btn-sm toggle-btn" (click)="toggleSidebar()">
+        <i class="bi" [ngClass]="isCollapsed ? 'bi-list' : 'bi-x-lg'"></i>
+      </button>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <ul class="nav nav-pills flex-column gap-1">
+
+      <li class="nav-item">
+        <a class="nav-link"
+           routerLink="/student-home"
+           routerLinkActive="active">
+          <i class="bi bi-house-door me-2"></i>
+          <span *ngIf="!isCollapsed">Student Home</span>
+        </a>
+      </li>
+
+      <li>
+        <a class="nav-link"
+           routerLink="/profile"
+           routerLinkActive="active">
+          <i class="bi bi-person-circle me-2"></i>
+          <span *ngIf="!isCollapsed">My Profile</span>
+        </a>
+      </li>
+
+      <li>
+        <a class="nav-link"
+           routerLink="/courses"
+           routerLinkActive="active">
+          <i class="bi bi-journal-bookmark me-2"></i>
+          <span *ngIf="!isCollapsed">My Courses</span>
+        </a>
+      </li>
+
+      <li>
+        <a class="nav-link"
+           routerLink="/attendance"
+           routerLinkActive="active">
+          <i class="bi bi-calendar-check me-2"></i>
+          <span *ngIf="!isCollapsed">Attendance</span>
+        </a>
+      </li>
+
+      <li>
+        <a class="nav-link"
+           routerLink="/assignments"
+           routerLinkActive="active">
+          <i class="bi bi-file-earmark-text me-2"></i>
+          <span *ngIf="!isCollapsed">Assignments</span>
+        </a>
+      </li>
+
+      <li>
+        <a class="nav-link"
+           routerLink="/results"
+           routerLinkActive="active">
+          <i class="bi bi-bar-chart-line me-2"></i>
+          <span *ngIf="!isCollapsed">Results</span>
+        </a>
+      </li>
+
+      <li>
+        <a class="nav-link"
+           routerLink="/settings"
+           routerLinkActive="active">
+          <i class="bi bi-gear me-2"></i>
+          <span *ngIf="!isCollapsed">Settings</span>
+        </a>
+      </li>
+
+      <li>
+        <a class="nav-link text-danger"
+           routerLink="/login">
+          <i class="bi bi-box-arrow-right me-2"></i>
+          <span *ngIf="!isCollapsed">Logout</span>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+
+
+<div class="flex-grow-1 d-flex flex-column">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-custom px-4">
+
+    <!-- Left Menu -->
+    <ul class="navbar-nav me-auto flex-row gap-3">
+      <li class="nav-item">
+        <a
+          class="nav-link text-secondary"
+          routerLink="/student">
+          Student
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/student-details"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">
+          Student Details
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/login"
+          routerLinkActive="active">
+          Login
+        </a>
+      </li>
+    </ul>
+
+    <!-- Right Menu -->
+    <div class="d-flex align-items-center gap-2">
+
+      <button class="btn notification-btn" type="button">
+        <i class="bi bi-bell"></i>
+        <span class="badge-dot"></span>
+      </button>
+
+      <button class="btn btn-light" type="button">
+        <i class="bi bi-gear"></i>
+      </button>
+
+      <button
+        class="btn btn-primary"
+        type="button"
+        (click)="logout()">
+        Logout
+      </button>
+
+      <div class="user-initials">LP</div>
+
+    </div>
+
+  </nav>
+
+
+
+    <!-- Content -->
+    <div class="content-area">
+      <div class="card shadow-sm p-3">
+        <app-student></app-student>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+      <!-- Footer -->
+    <footer class="border-top py-3 text-center text-muted">
+      © 2025 Company, Inc
+    </footer>
+  </div>
+<router-outlet></router-outlet>

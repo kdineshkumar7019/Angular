@@ -1,0 +1,119 @@
+<!-- ================= FORM CARD ================= -->
+<div class="card shadow-sm p-3 mb-4 form-card">
+  <form (ngSubmit)="saveOrUpdate()" class="row g-3 align-items-end">
+
+    <div class="col-md-2">
+      <label class="form-label">Name</label>
+      <input class="form-control" [(ngModel)]="student.studentName" name="studentName" required>
+    </div>
+
+    <div class="col-md-2">
+      <label class="form-label">Age</label>
+      <input type="number" class="form-control" [(ngModel)]="student.age" name="age" required>
+    </div>
+
+    <div class="col-md-2">
+      <label class="form-label">Gender</label>
+      <select class="form-select" [(ngModel)]="student.gender" name="gender" required>
+        <option value="">Select</option>
+        <option>Male</option>
+        <option>Female</option>
+      </select>
+    </div>
+
+    <div class="col-md-2">
+      <label class="form-label">Course</label>
+      <input class="form-control" [(ngModel)]="student.course" name="course" required>
+    </div>
+
+    <div class="col-md-2">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" [(ngModel)]="student.email" name="email" required>
+    </div>
+
+    <div class="col-md-2">
+      <label class="form-label">Phone</label>
+      <input class="form-control" [(ngModel)]="student.phoneNumber" name="phoneNumber" required>
+    </div>
+
+    <div class="col-md-2">
+      <button class="btn btn-success w-100">
+        {{ isEditMode ? 'Update' : 'Save' }}
+      </button>
+    </div>
+
+  </form>
+</div>
+
+<!-- ================= TABLE TOOLBAR ================= -->
+<div class="table-toolbar mb-3">
+  <h5>Students</h5>
+
+  <div class="filters">
+    <input
+      class="form-control"
+      placeholder="Search..."
+      [(ngModel)]="searchText " >
+  </div>
+</div>
+
+<!-- ================= TABLE CARD ================= -->
+<div class="card shadow-sm table-card ">
+  <div class="table-responsive table-wrapper "  >
+    <table class="table table-striped mb-0">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Course</th>
+          <th>Gender</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th class="text-center">Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let s of filteredStudents() | paginate: { itemsPerPage: 10, currentPage: p }">
+          <td>{{ s.studentId }}</td>
+          <td class="fw-semibold">{{ s.studentName }}</td>
+          <td>{{ s.age }}</td>
+
+          <td>
+            <span class="pill course-pill">{{ s.course }}</span>
+          </td>
+
+          <td>
+            <span class="pill"
+              [ngClass]="s.gender === 'Male' ? 'male-pill' : 'female-pill'">
+              {{ s.gender }}
+            </span>
+          </td>
+
+          <td class="text-muted">{{ s.email }}</td>
+          <td>{{ s.phoneNumber }}</td>
+
+          <td class="text-center">
+            <button class="btn btn-sm btn-primary me-1" (click)="editStudent(s)">
+              Edit
+            </button>
+            <button class="btn btn-sm btn-danger" (click)="deleteStudent(s.studentId)">
+              Delete
+            </button>
+          </td>
+        </tr>
+
+        <tr *ngIf="filteredStudents().length === 0">
+          <td colspan="9" class="text-center text-muted py-4">
+            No records found
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <pagination-controls
+  (pageChange)="p = $event"
+  class="d-flex justify-content-center mt-3">
+</pagination-controls>
+</div>

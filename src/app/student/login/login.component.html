@@ -1,0 +1,53 @@
+<div class="login-page">
+  <div class="login-container">
+
+    <!-- LEFT PANEL -->
+    <div class="left-panel">
+      <h1>Welcome to Student</h1>
+      <p>
+        Student data encompasses all information collected about learners—
+        demographics, grades, attendance, and performance.
+      </p>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="right-panel">
+      <h3>USER LOGIN</h3>
+
+      <form (ngSubmit)="login()">
+
+        <div class="input-box">
+          <span class="icon">📧</span>
+          <input type="email" placeholder="Email" [(ngModel)]="loginData.email" name="email" required />
+        </div>
+
+        <div class="input-box">
+          <span class="icon">🔒</span>
+          <input type="password" placeholder="Password" [(ngModel)]="loginData.password" name="password" required />
+        </div>
+
+        <div class="options">
+          <label>
+            <input type="checkbox" />
+            Remember me
+          </label>
+          <div class="links">
+            <a routerLink="/forgot-password">Forgot?</a>
+            <a routerLink="/register">Register</a>
+          </div>
+        </div>
+
+        <div class="alert" *ngIf="alertMessage" [ngClass]="alertType">
+          {{ alertMessage }}
+        </div>
+
+        <button type="submit" [disabled]="isLoading">
+          {{ isLoading ? 'Logging in...' : 'LOGIN' }}
+        </button>
+
+      </form>
+      <div id="googleBtn"></div>
+    </div>
+
+  </div>
+</div>
